@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2066D224-70C9-35FF-F13D-8BF1B2F66FAA}</ProjectGuid>
+    <ProjectName>oil_refinery</ProjectName>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <PlatformToolset>v140</PlatformToolset>
+    <ConfigurationType>Application</ConfigurationType>
+    <OutDir>$(ProjectDir)../bin/</OutDir>
+    <TargetName>$(ProjectName)_x64d</TargetName>
+    <LocalDebuggerEnvironment>PATH=$(ProjectDir)../bin/x64;$(ProjectDir)../bin/;%PATH%</LocalDebuggerEnvironment>
+    <LocalDebuggerCommandArguments>-data_path ../ -engine_config "../data/oil_refinery/unigine.cfg"</LocalDebuggerCommandArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <PlatformToolset>v140</PlatformToolset>
+    <ConfigurationType>Application</ConfigurationType>
+    <OutDir>$(ProjectDir)../bin/</OutDir>
+    <TargetName>$(ProjectName)_x64</TargetName>
+    <LocalDebuggerEnvironment>PATH=$(ProjectDir)../bin/x64;$(ProjectDir)../bin/;%PATH%</LocalDebuggerEnvironment>
+    <LocalDebuggerCommandArguments>-data_path ../ -engine_config "../data/oil_refinery/unigine.cfg"</LocalDebuggerCommandArguments>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform"/>
+  </ImportGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <PreprocessorDefinitions>DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX64</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Unigine_x64d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Full</Optimization>
+      <AdditionalIncludeDirectories>../include;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX64</TargetMachine>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Unigine_x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="AppSystemLogic.cpp" />
+    <ClCompile Include="oil_refinery.cpp" />
+    <ClCompile Include="CameraCinematic.cpp" />
+    <ClCompile Include="AppWorldLogic.cpp" />
+    <ClCompile Include="ProjectUtils.cpp" />
+    <ClCompile Include="Telemetry.cpp" />
+    <ClCompile Include="LogicComponents/LogicObject.cpp" />
+    <ClCompile Include="LogicComponents/CameraAttachComponent.cpp" />
+    <ClCompile Include="LogicComponents/Tasks/Task.cpp" />
+    <ClCompile Include="LogicComponents/Accidents/Accident.cpp" />
+    <ClCompile Include="LogicComponents/Timers/Timer.cpp" />
+    <ClCompile Include="LogicComponents/Observers/Observer.cpp" />
+    <ClCompile Include="LogicComponents/Observers/Switches/NodeSwitcher.cpp" />
+    <ClCompile Include="LogicComponents/Observers/Switches/MaterialSwitcher.cpp" />
+    <ClCompile Include="LogicComponents/Observers/Sounds/SoundSequence.cpp" />
+    <ClCompile Include="LogicComponents/Observers/Animations/ScaleAnimation.cpp" />
+    <ClCompile Include="LogicComponents/Observers/Animations/RotationAnimation.cpp" />
+    <ClCompile Include="LogicComponents/Observers/Animations/DOFAnimation.cpp" />
+    <ClCompile Include="LogicComponents/Observers/Animations/CameraShake.cpp" />
+    <ClCompile Include="LogicComponents/Observers/Animations/LightProbeAnimation.cpp" />
+    <ClCompile Include="LogicComponents/Observers/Animations/FadeAnimation.cpp" />
+    <ClCompile Include="LogicComponents/Interactable/TransformationLogic.cpp" />
+    <ClCompile Include="LogicComponents/Interactable/UsageLogic.cpp" />
+    <ClCompile Include="LogicComponents/Interactable/SwitchingLogic.cpp" />
+    <ClCompile Include="LogicComponents/Interactable/GrabLogic.cpp" />
+    <ClCompile Include="LogicComponents/Interactable/PlayerPositionLogic.cpp" />
+    <ClCompile Include="LogicComponents/Interactable/SelectionLogic.cpp" />
+    <ClCompile Include="LogicComponents/Interactable/InspectionManager.cpp" />
+    <ClCompile Include="LogicComponents/Interactable/InspectionLogic.cpp" />
+    <ClCompile Include="LogicComponents/Interactable/MoveLogic.cpp" />
+    <ClCompile Include="LogicComponents/Missions/Mission.cpp" />
+    <ClCompile Include="Framework/Triggers.cpp" />
+    <ClCompile Include="Framework/SoundManager.cpp" />
+    <ClCompile Include="Framework/Utils.cpp" />
+    <ClCompile Include="Framework/Components/VRPlayerSpawner.cpp" />
+    <ClCompile Include="Framework/Components/Players/VRPlayerOpenVR.cpp" />
+    <ClCompile Include="Framework/Components/Players/VRPlayerOculus.cpp" />
+    <ClCompile Include="Framework/Components/Players/VRPlayer.cpp" />
+    <ClCompile Include="Framework/Components/Players/VRPlayerVR.cpp" />
+    <ClCompile Include="Framework/Components/Players/VRPlayerPC.cpp" />
+    <ClCompile Include="Framework/Components/Objects/ObjInspectable.cpp" />
+    <ClCompile Include="Framework/Components/Objects/ObjSelectable.cpp" />
+    <ClCompile Include="Framework/Components/Objects/ObjHandle.cpp" />
+    <ClCompile Include="Framework/Components/Objects/ObjSwitch.cpp" />
+    <ClCompile Include="Framework/Components/Objects/ObjMovable.cpp" />
+    <ClCompile Include="Demo/LogicController.cpp" />
+    <ClCompile Include="Demo/TaskHelper.cpp" />
+    <ClCompile Include="Demo/DoorProbeAnimation.cpp" />
+    <ClCompile Include="Demo/Tooltip.cpp" />
+    <ClCompile Include="Demo/Inventory/InventoryItem.cpp" />
+    <ClCompile Include="Demo/Inventory/Inventory.cpp" />
+    <ClCompile Include="Demo/Inventory/ChecklistInvertoryItem.cpp" />
+    <ClCompile Include="Demo/Logic/ChecklistTaskInfo.cpp" />
+    <ClCompile Include="Demo/Logic/GeneratorLogic.cpp" />
+    <ClCompile Include="Demo/Logic/InteractiveMode.cpp" />
+    <ClCompile Include="Demo/Logic/UdhLogic.cpp" />
+    <ClCompile Include="Demo/Logic/ObjEarthingLogic.cpp" />
+    <ClCompile Include="Demo/Logic/ChecklistItem.cpp" />
+    <ClCompile Include="Demo/Objects/ObjGlove.cpp" />
+    <ClCompile Include="Demo/Objects/InteractableHandle.cpp" />
+    <ClCompile Include="Demo/Objects/ObjEarthingIndicator.cpp" />
+    <ClCompile Include="Demo/Objects/ObjMouseMovable.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CameraCinematic.h" />
+    <ClInclude Include="Mode.h" />
+    <ClInclude Include="ProjectUtils.h" />
+    <ClInclude Include="AppSystemLogic.h" />
+    <ClInclude Include="AppWorldLogic.h" />
+    <ClInclude Include="Telemetry.h" />
+    <ClInclude Include="LogicComponents/CameraAttachComponent.h" />
+    <ClInclude Include="LogicComponents/LogicObject.h" />
+    <ClInclude Include="LogicComponents/Tasks/Task.h" />
+    <ClInclude Include="LogicComponents/Accidents/Accident.h" />
+    <ClInclude Include="LogicComponents/Timers/Timer.h" />
+    <ClInclude Include="LogicComponents/Observers/Observer.h" />
+    <ClInclude Include="LogicComponents/Observers/Switches/NodeSwitcher.h" />
+    <ClInclude Include="LogicComponents/Observers/Switches/MaterialSwitcher.h" />
+    <ClInclude Include="LogicComponents/Observers/Sounds/SoundSequence.h" />
+    <ClInclude Include="LogicComponents/Observers/Animations/FadeAnimation.h" />
+    <ClInclude Include="LogicComponents/Observers/Animations/ScaleAnimation.h" />
+    <ClInclude Include="LogicComponents/Observers/Animations/LightProbeAnimation.h" />
+    <ClInclude Include="LogicComponents/Observers/Animations/CameraShake.h" />
+    <ClInclude Include="LogicComponents/Observers/Animations/RotationAnimation.h" />
+    <ClInclude Include="LogicComponents/Observers/Animations/DOFAnimation.h" />
+    <ClInclude Include="LogicComponents/Interactable/TransformationLogic.h" />
+    <ClInclude Include="LogicComponents/Interactable/GrabLogic.h" />
+    <ClInclude Include="LogicComponents/Interactable/MoveLogic.h" />
+    <ClInclude Include="LogicComponents/Interactable/InspectionManager.h" />
+    <ClInclude Include="LogicComponents/Interactable/InspectionLogic.h" />
+    <ClInclude Include="LogicComponents/Interactable/PlayerPositionLogic.h" />
+    <ClInclude Include="LogicComponents/Interactable/SelectionLogic.h" />
+    <ClInclude Include="LogicComponents/Interactable/UsageLoigc.h" />
+    <ClInclude Include="LogicComponents/Interactable/SwitchingLogic.h" />
+    <ClInclude Include="LogicComponents/Missions/Mission.h" />
+    <ClInclude Include="Framework/Triggers.h" />
+    <ClInclude Include="Framework/SoundManager.h" />
+    <ClInclude Include="Framework/Utils.h" />
+    <ClInclude Include="Framework/Components/VRInteractable.h" />
+    <ClInclude Include="Framework/Components/VRPlayerSpawner.h" />
+    <ClInclude Include="Framework/Components/Players/VRPlayerOpenVR.h" />
+    <ClInclude Include="Framework/Components/Players/VRPlayerOculus.h" />
+    <ClInclude Include="Framework/Components/Players/VRPlayer.h" />
+    <ClInclude Include="Framework/Components/Players/VRPlayerPC.h" />
+    <ClInclude Include="Framework/Components/Players/VRPlayerVR.h" />
+    <ClInclude Include="Framework/Components/Objects/ObjMovable.h" />
+    <ClInclude Include="Framework/Components/Objects/ObjInspectable.h" />
+    <ClInclude Include="Framework/Components/Objects/ObjSelectable.h" />
+    <ClInclude Include="Framework/Components/Objects/ObjHandle.h" />
+    <ClInclude Include="Framework/Components/Objects/ObjSwitch.h" />
+    <ClInclude Include="Demo/DoorProbeAnimation.h" />
+    <ClInclude Include="Demo/LogicController.h" />
+    <ClInclude Include="Demo/TaskHelper.h" />
+    <ClInclude Include="Demo/Tooltip.h" />
+    <ClInclude Include="Demo/Inventory/InventoryItem.h" />
+    <ClInclude Include="Demo/Inventory/Inventory.h" />
+    <ClInclude Include="Demo/Inventory/ChecklistInvertoryItem.h" />
+    <ClInclude Include="Demo/Logic/ChecklistTaskInfo.h" />
+    <ClInclude Include="Demo/Logic/ObjEarthingLogic.h" />
+    <ClInclude Include="Demo/Logic/GeneratorLogic.h" />
+    <ClInclude Include="Demo/Logic/ChecklistItem.h" />
+    <ClInclude Include="Demo/Logic/UdhLogic.h" />
+    <ClInclude Include="Demo/Logic/InteractiveMode.h" />
+    <ClInclude Include="Demo/Objects/InteractableHandle.h" />
+    <ClInclude Include="Demo/Objects/ObjEarthingIndicator.h" />
+    <ClInclude Include="Demo/Objects/ObjGlove.h" />
+    <ClInclude Include="Demo/Objects/ObjMouseMovable.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>
